@@ -1,9 +1,8 @@
 module Main where
 
 import System.Environment (getArgs)
-import qualified Data.Text as T
-import qualified Data.Text.IO as T
-import qualified Data.Text.Read as T
+import qualified Data.Text as T (Text)
+import qualified Data.Text.IO as T (putStrLn, readFile)
 import Caesar (caesar)
 
 main :: IO ()

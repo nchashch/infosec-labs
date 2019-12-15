@@ -1,6 +1,6 @@
 module Caesar (caesar) where
 
-import qualified Data.Text as T
+import qualified Data.Text as T (Text, map, filter, toLower)
 import Data.Char (chr, ord)
 
 normalize :: T.Text -> T.Text
