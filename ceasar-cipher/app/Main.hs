@@ -4,7 +4,7 @@ import System.Environment (getArgs)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import qualified Data.Text.Read as T
-import Lib (caesar)
+import Caesar (caesar)
 
 main :: IO ()
 main = do

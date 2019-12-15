@@ -1,4 +1,4 @@
-module Lib (caesar) where
+module Caesar (caesar) where
 
 import qualified Data.Text as T
 import Data.Char (chr, ord)
