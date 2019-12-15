@@ -1,6 +1,10 @@
 # Caesar cipher implementation
 ## Usage:
+To encrypt with key = 13:
 ``` sh
-stack run fileName key
+stack run fileName 13
 ```
-key must be a number
+To decrypt a file encrypted with key = 13:
+``` sh
+stack run fileName -- '-13'
+```
