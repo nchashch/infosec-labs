@@ -1,5 +1,6 @@
 module Main where
 
+import System.Environment (getArgs)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import qualified Data.Text.Read as T
@@ -7,8 +8,11 @@ import Lib (caesar)
 
 main :: IO ()
 main = do
-  fileName <- T.getLine
-  text <- T.readFile (T.unpack fileName)
-  let cipherText = caesar 10 text
-  T.putStrLn cipherText
-  T.putStrLn $ caesar (-10) cipherText
+  args <- getArgs
+  case args of
+    [fileName, key] -> encryptFile fileName (read key :: Int) >>= T.putStrLn
+    otherwise -> putStrLn "Invalid arguments\nUsage:\ncaesar fileName key"
+encryptFile :: FilePath -> Int -> IO T.Text
+encryptFile fileName key = do
+  text <- T.readFile fileName
+  return $ caesar key text
