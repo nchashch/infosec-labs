@@ -11,6 +11,7 @@ main = do
   case args of
     [fileName, key] -> encryptFile fileName (read key :: Int) >>= T.putStrLn
     otherwise -> putStrLn "Invalid arguments\nUsage:\ncaesar fileName key"
+
 encryptFile :: FilePath -> Int -> IO T.Text
 encryptFile fileName key = do
   text <- T.readFile fileName
