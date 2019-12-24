@@ -1,6 +1,4 @@
-module Lib
-    ( someFunc
-    ) where
+module DiffieHellman where
 
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"

@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import DiffieHellman
 
 main :: IO ()
 main = someFunc
