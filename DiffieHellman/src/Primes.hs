@@ -1,4 +1,4 @@
-module Primes (randomPrime, isPrime) where
+module Primes (randomPrime, isPrime, randomBits, randomOddBits) where
 
 import Control.Monad (replicateM, unless)
 import System.Random (randomRIO)
