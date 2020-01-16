@@ -18,14 +18,17 @@ inverse n modulus = undefined
 encryptionExponent :: Integer
 encryptionExponent = 2^16 + 1
 
-decryptionExponent :: Integer -> Integer -> Maybe Integer
+decryptionExponent :: Integer -> Integer -> Integer
 decryptionExponent p q = modInv encryptionExponent (carmichaelTotient p q)
 
 encrypt :: Integer -> Integer -> Integer
 encrypt modulus message = powMod message encryptionExponent modulus
 
 decrypt :: Integer -> Integer -> Integer -> Integer
-decrypt modulus d ciphertext = powMod ciphertext d modulus
+decrypt p q ciphertext = powMod ciphertext d modulus
+  where
+    modulus = p*q
+    d = decryptionExponent p q
 
 -- Code from https://github.com/metaleap/rosetta-haskell-dump/blob/master/modular-inverse.hs
 -- Extended Euclidean algorithm.  Given non-negative a and b, return x, y and g
@@ -38,5 +41,6 @@ gcdExt a b = let (q, r) = a `quotRem` b
 -- Given a and m, return Just x such that ax = 1 mod m.  If there is no such x
 -- return Nothing.
 modInv a m = let (i, _, g) = gcdExt a m
-             in if g == 1 then Just (mkPos i) else Nothing
+             in mkPos i
+             --in if g == 1 then Just (mkPos i) else Nothing
   where mkPos x = if x < 0 then x + m else x
