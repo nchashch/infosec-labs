@@ -1,6 +1,6 @@
 module DiffieHellman where
 
-import Primes (randomPrime)
+import Primes (randomPrime, randomBits)
 import System.Random (randomRIO)
 import Math.NumberTheory.Powers.Modular (powMod)
 
