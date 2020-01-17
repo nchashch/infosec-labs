@@ -2,7 +2,7 @@ module Freq where
 
 import qualified Data.Text as T
 import qualified Data.HashMap.Strict as HMS
-import Data.Char (chr, ord)
+import Data.Char (chr, ord, isSpace)
 import Data.Sort
 import Data.List (group, sort)
 
@@ -11,7 +11,7 @@ freqCount :: T.Text -> FreqDict
 freqCount text = T.foldr freqInc (HMS.empty :: FreqDict) text
 
 freqInc :: Char -> FreqDict -> FreqDict
-freqInc ch freqDict = HMS.insertWith (\new old -> new + old) ch 1 freqDict
+freqInc ch freqDict = if isSpace ch then freqDict else HMS.insertWith (\new old -> new + old) ch 1 freqDict
 
 type FreqDict = HMS.HashMap Char Int
 
