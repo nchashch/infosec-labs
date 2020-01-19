@@ -98,7 +98,7 @@ data SessionKey = SessionKey {
   } deriving Show
 
 clientComputeSessionKey :: Params -> SignUpData -> ScramblerData -> SessionKey
-clientComputeSessionKey (Params n g k) (SignUpData _ p salt x _) (ScramblerData r0 _ _ b u) =
+clientComputeSessionKey (Params n g k) (SignUpData _ _ _ x _) (ScramblerData r0 _ _ b u) =
   SessionKey {
     secret = s,
     key = hashInteger s
@@ -107,7 +107,7 @@ clientComputeSessionKey (Params n g k) (SignUpData _ p salt x _) (ScramblerData 
     s = powMod (b - k*(powMod g x n)) (r0 + u*x) n
 
 serverComputeSessionKey :: Params -> SignUpData -> ScramblerData -> SessionKey
-serverComputeSessionKey (Params n g k) (SignUpData _ p salt _ v) (ScramblerData _ r1 a _ u) =
+serverComputeSessionKey (Params n g k) (SignUpData _ _ _ _ v) (ScramblerData _ r1 a _ u) =
   SessionKey {
     secret = s,
     key = hashInteger s
