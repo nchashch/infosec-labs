@@ -4,9 +4,6 @@ import Primes (randomPrime, randomBits)
 import System.Random (randomRIO)
 import Math.NumberTheory.Powers.Modular (powMod)
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
-
 getGenerator :: Integer -> IO Integer
 getGenerator p = do
   g <- randomRIO (2, p-2)

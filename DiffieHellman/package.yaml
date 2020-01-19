@@ -23,6 +23,11 @@ dependencies:
 - base >= 4.7 && < 5
 - random
 - arithmoi
+- saltine
+- cereal
+- bytestring
+- random-bytestring
+- text
 
 library:
   source-dirs: src
